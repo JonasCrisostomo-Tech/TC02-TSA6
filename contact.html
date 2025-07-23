@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    :root {
+      --accent-color: #0ab3ff;
+      --background-color: #1c2630;
+      --form-bg-color: #fff;
+      --label-color: #666;
+      --input-border-color: #aaa;
+      --input-focus-border-color: var(--accent-color);
+      --input-text-color: #333;
+      --font-family: 'Poppins', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: var(--font-family);
+    }
+
+    body {
+      background-color: var(--background-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      color: var(--input-text-color);
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: var(--form-bg-color);
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    form {
+      background-color: var(--form-bg-color);
+      padding: 50px 40px;
+      border-radius: 12px;
+      max-width: 450px;
+      width: 100%;
+      box-shadow: 0 0 30px rgba(10,179,255,0.3);
+      text-align: center;
+    }
+
+    form h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--background-color);
+    }
+
+    .inputBox {
+      position: relative;
+      margin-bottom: 35px;
+      width: 100%;
+    }
+
+    .inputBox input,
+    .inputBox textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid var(--input-border-color);
+      outline: none;
+      color: var(--input-text-color);
+      font-size: 1.1em;
+      padding: 10px 0;
+      letter-spacing: 0.05em;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+      font-family: var(--font-family);
+    }
+
+    textarea {
+      min-height: 100px;
+      padding: 15px 10px 10px 10px;
+    }
+
+    .inputBox input:focus,
+    .inputBox textarea:focus,
+    .inputBox input:valid,
+    .inputBox textarea:valid {
+      border-bottom-color: var(--input-focus-border-color);
+    }
+
+    .inputBox label {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      pointer-events: none;
+      color: var(--label-color);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: 0.3s ease all;
+      cursor: text;
+      user-select: none;
+    }
+
+    .inputBox input:focus + label,
+    .inputBox textarea:focus + label,
+    .inputBox input:valid + label,
+    .inputBox textarea:valid + label {
+      top: -20px;
+      font-size: 0.8rem;
+      color: var(--accent-color);
+    }
+
+    .inputBox label span {
+      display: inline-block;
+      opacity: 0.6;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      margin-right: 2px;
+    }
+
+    .inputBox input:focus + label span,
+    .inputBox input:valid + label span,
+    .inputBox textarea:focus + label span,
+    .inputBox textarea:valid + label span {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    input[type="submit"] {
+      background-color: var(--accent-color);
+      border: none;
+      padding: 15px 0;
+      width: 100%;
+      border-radius: 50px;
+      color: var(--form-bg-color);
+      font-size: 1.4em;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-transform: uppercase;
+      box-shadow: 0 5px 15px rgba(10,179,255,0.5);
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0a8ede;
+      box-shadow: 0 8px 20px rgba(10,142,222,0.7);
+    }
+
+    @media (max-width: 480px) {
+      form {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <form action="https://formsubmit.co/jonaselij99@gmail.com" method="POST" novalidate>
+    <h2>Contact Us</h2>
+
+    <div class="inputBox">
+      <input type="text" name="name" id="name" required autocomplete="off" />
+      <label for="name">
+        <span>N</span><span>a</span><span>m</span><span>e</span>
+      </label>
+    </div>
+
+    <div class="inputBox">
+      <input type="email" name="email" id="email" required autocomplete="off" />
+      <label for="email">
+        <span>E</span><span>m</span><span>a</span><span>i</span><span>l</span>
+      </label>
+    </div>
+
+    <div class="inputBox">
+      <textarea name="suggestions" id="suggestions" required autocomplete="off" rows="4"></textarea>
+      <label for="suggestions">
+        <span>t</span><span>e</span><span>x</span><span>t</span><span>b</span><span>o</span><span>x</span>
+      </label>
+    </div>
+
+    <input type="submit" value="Send" />
+  </form>
+
+  <script>
+    document.querySelectorAll('label').forEach(label => {
+      if (label.querySelectorAll('span').length === 0) {
+        const text = label.textContent;
+        label.innerHTML = '';
+        [...text].forEach((char, i) => {
+          const span = document.createElement('span');
+          span.textContent = char;
+          span.style.transitionDelay = `${i * 50}ms`;
+          label.appendChild(span);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+
